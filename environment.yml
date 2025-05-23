@@ -1,0 +1,9 @@
+name: openai-sdk-agent
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - pip
+  - pip:
+      - openai-agents
+prefix: /home/cannarocks/miniconda3/envs/openai-sdk-agent
