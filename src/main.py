@@ -28,7 +28,7 @@ async def main():
     # Load environment variables
     load_env()
 
-    await ask("Com'è fatta la bandiera della Turchia?")
+    await ask("Calcola l'area di un quadrato usando gli integrali")
 
     print("🪁 done... ")
 
