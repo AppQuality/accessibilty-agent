@@ -2,6 +2,8 @@
 
 This project uses the `openai-agents` package to build and manage AI agents with OpenAI's APIs. The environment is managed using [conda](https://docs.conda.io/), ensuring reproducibility and easy setup for all contributors.
 
+> **More info at:** [DeepWiki](https://deepwiki.com/cannarocks/openai-sdk-example)
+
 ## What is `openai-agents`?
 
 `openai-agents` is a Python package that provides tools and abstractions for building, running, and managing AI agents powered by OpenAI models. It simplifies agent orchestration, prompt management, and integration with OpenAI's API.

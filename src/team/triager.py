@@ -7,6 +7,7 @@ agent = Agent(
     name="Triage Agent",
     instructions="You determine which agent to use based on the user's homework question",
     handoffs=[history_tutor, math_tutor],
+    model="gpt-4o-mini",
     input_guardrails=[
         InputGuardrail(guardrail_function=homework_guardrail),
     ],
