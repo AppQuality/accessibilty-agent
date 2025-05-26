@@ -3,7 +3,7 @@ from .base import HomeworkOutput
 
 guardrail = Agent(
     name="Guardrail check",
-    instructions="Check if the user is asking about homework.",
+    instructions="Check if the user is asking about history or math homework.",
     # Better to use the cheaper model to verify if the request is valid
     model="gpt-4o-mini",
     output_type=HomeworkOutput,

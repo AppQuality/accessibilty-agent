@@ -1,8 +1,14 @@
 # filepath: /agent-oai-sdk/agent-oai-sdk/src/main.py
 from config.env import config
-from agents import Runner, InputGuardrailTripwireTriggered
+from agents import Runner, InputGuardrailTripwireTriggered, RunConfig
 from team import triager
 import asyncio
+
+# Set run_config for Runner
+run_config = RunConfig(
+    model=config.DEFAULT_MODEL,
+    workflow_name="Example triager workflow",
+)
 
 
 def load_env():
@@ -12,7 +18,7 @@ def load_env():
 
 async def ask(question: str):
     try:
-        result = await Runner.run(triager, question)
+        result = await Runner.run(triager, question, run_config=run_config)
         print(result.final_output)
 
     except InputGuardrailTripwireTriggered as e:
@@ -28,7 +34,9 @@ async def main():
     # Load environment variables
     load_env()
 
-    await ask("Calcola l'area di un quadrato usando gli integrali")
+    query = input("Enter a math or history query: ")
+
+    await ask(query)
 
     print("🪁 done... ")
 
