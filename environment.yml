@@ -6,4 +6,7 @@ dependencies:
   - pip
   - pip:
       - openai-agents
-prefix: /home/cannarocks/miniconda3/envs/openai-sdk-agent
+      - asyncio
+      - fastapi
+      - uvicorn
+prefix: ~/miniconda3/envs/openai-sdk-agent

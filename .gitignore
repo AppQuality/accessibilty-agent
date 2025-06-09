@@ -1,2 +1,5 @@
 .env
 __pycache__/
+
+output.html
+output.md
