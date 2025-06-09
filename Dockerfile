@@ -1,5 +1,10 @@
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim-buster
+
+SHELL [ "/bin/bash", "-c" ]
+
+ENV SHELL=/bin/bash
+
 # Set the working directory in the container to /app
 WORKDIR /app
 
