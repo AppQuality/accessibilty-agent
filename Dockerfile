@@ -14,11 +14,8 @@ ENV NVM_DIR=/root/.nvm
 RUN apt update
 RUN apt install -y curl
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
-&& . /root/.nvm/nvm.sh \
-&& nvm install 20 \
-&& nvm alias default 20 \
-&& nvm use default
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+ && apt install -y nodejs
 
 ENV NODE_PATH=$NVM_DIR/v20/lib/node_modules
 ENV PATH=$NVM_DIR/v20/bin:$PATH
