@@ -11,4 +11,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8000
 
 # Run run.py when the container launches
-CMD ["uvicorn","src.main:app"]
+CMD ["uvicorn","src.main:app", "--host", "0.0.0.0"]
