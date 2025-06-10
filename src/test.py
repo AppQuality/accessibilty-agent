@@ -161,7 +161,7 @@ async def main(url,cp_id):
         async with MCPServerSse(
             name="SSE Python Server",               
             params={
-                "url": "http://localhost:3000/sse",
+                "url": os.getenv("MCP_SERVER_URL", "http://localhost:3000/sse"),
             },
             client_session_timeout_seconds=1000
         ) as server:
