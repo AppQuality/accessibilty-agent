@@ -181,8 +181,9 @@ if __name__ == "__main__":
         sys.exit(1)
 
     arg = sys.argv[1]
+    cp = sys.argv[2]
     if not is_valid_url(arg):
         print(f"Errore: '{arg}' non è un URL valido.")
         sys.exit(1)
 
-    asyncio.run(main(arg))
+    asyncio.run(main(arg,cp))
