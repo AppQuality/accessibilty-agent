@@ -150,6 +150,9 @@ async def run(fsserver: MCPServer,mcp_server: MCPServer,url,cp_id):
 
 async def main(url,cp_id):
       current_dir = os.path.dirname(os.path.abspath(__file__))
+      mcp_server_url = os.getenv("MCP_SERVER_URL", "http://localhost:3000/sse")
+      
+      print(f"Using MCP server URL: {mcp_server_url}")
 
       async with MCPServerStdio(
         name="Filesystem Server, via npx",
@@ -161,7 +164,7 @@ async def main(url,cp_id):
         async with MCPServerSse(
             name="SSE Python Server",               
             params={
-                "url": os.getenv("MCP_SERVER_URL", "http://localhost:3000/sse"),
+                "url": mcp_server_url,
             },
             client_session_timeout_seconds=1000
         ) as server:
