@@ -10,6 +10,10 @@ from agents.model_settings import ModelSettings
 
 
 async def run(fsserver: MCPServer,mcp_server: MCPServer,url,cp_id):
+    
+    await fsserver.connect()
+    await mcp_server.connect()
+    
     if os.path.exists("src/tasks/links.md"):
         os.unlink("src/tasks/links.md")
         with open("src/tasks/links.md", "w") as file:
@@ -154,25 +158,26 @@ async def main(url,cp_id):
       
       print(f"Using MCP server URL: {mcp_server_url}")
 
-      async with MCPServerStdio(
+      fsserver = MCPServerStdio(
         name="Filesystem Server, via npx",
         params={
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-filesystem", current_dir],
         },
-    ) as fsserver:
-        async with MCPServerSse(
-            name="SSE Python Server",               
-            params={
-                "url": mcp_server_url,
-            },
-            client_session_timeout_seconds=1000
-        ) as server:
-            trace_id = gen_trace_id()
-            with trace(workflow_name="SSE Example", trace_id=trace_id):
-                print(f"View trace: https://platform.openai.com/traces/trace?trace_id={trace_id}\n")
-                await run(fsserver,server,url,cp_id)
-
+      )
+      server = MCPServerSse(
+        name="SSE Python Server",               
+        params={
+            "url": mcp_server_url,
+        },
+        client_session_timeout_seconds=1000
+       ) 
+      trace_id = gen_trace_id()
+      with trace(workflow_name="SSE Example", trace_id=trace_id):
+        trace_url = f"https://platform.openai.com/traces/trace?trace_id={trace_id}"
+        print(f"Trace URL: {trace_url}\n")
+        asyncio.create_task(run(fsserver,server,url,cp_id))
+        return trace_url
 
 def is_valid_url(url):
     return re.match(r'^https?://[^\s]+$', url) is not None
