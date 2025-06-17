@@ -67,7 +67,11 @@ async def run(fsserver: MCPServer,mcp_server: MCPServer,url,cp_id):
     - `Element` è il tag HTML o il selector dell'issue.
     - `Short Description` è una breve descrizione dell'issue, ad esempio "Missing Alt Text".
     - `Long and Descriptive Description` è un descrizione dettagliata dell'issue, scritta per non esperti, con una spiegazione del problema e perché è importante risolverlo
-    - `bugType` è esattamente uno tra: PERCEIVABLE, OPERABLE, UNDERSTANDABLE, ROBUST. Non dedurre o alterare questi valori.
+    - `bugType` è ESATTAMENTE uno tra i seguenti
+        - "PERCEIVABLE"
+        - "OPERABLE"
+        - "UNDERSTANDABLE"
+        - "ROBUST"
     - `Gravity` è mappato da `impactLevel` come segue:
         - "minor" → LOW
         - "moderate" → MEDIUM
