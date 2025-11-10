@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.10-slim-buster
+FROM python:3.12-slim-bookworm
 
 SHELL [ "/bin/bash", "-c" ]
 
@@ -11,8 +11,8 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app 
 ENV NVM_DIR=/root/.nvm
 
-RUN apt update
-RUN apt install -y curl
+RUN apt-get update
+RUN apt-get install -y curl
 
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
  && apt install -y nodejs
